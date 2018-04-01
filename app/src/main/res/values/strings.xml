@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Money Manager</string>
+    <string name="open">Open</string>
+    <string name="menu_budgetPlan">Budget Plan</string>
+    <string name="menu_savingsPlan">Savings Plan</string>
+    <string name="menu_purchaseTrends">Purchase Trends</string>
+</resources>
