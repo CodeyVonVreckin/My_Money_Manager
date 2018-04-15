@@ -4,4 +4,7 @@
     <string name="menu_budgetPlan">Budget Plan</string>
     <string name="menu_savingsPlan">Savings Plan</string>
     <string name="menu_purchaseTrends">Purchase Trends</string>
+    <string name="button_makePurchase">Make Purchase</string>
+    <string name="label_currentAvailable">Available Amount</string>
+    <string name="label_currentSpent">Amount Spent</string>
 </resources>

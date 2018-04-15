@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.UUID;
+
 @Entity(tableName = "BudgetConstraints")
 public class BudgetConstraints {
     @PrimaryKey
@@ -56,5 +58,21 @@ public class BudgetConstraints {
 
     public double MiscExpendituresConstraint(){return MiscExpendituresConstraint;}
     public void MiscExpendituresConstraint(double val){MiscExpendituresConstraint =val;}
+
+    public void SetDefaultConstraints(MyMoneyManager db){
+
+        BudgetConstraints constraints = new BudgetConstraints();
+        String uuid = UUID.randomUUID().toString();
+        constraints.Uid(uuid);
+        constraints.MonthlyPay(3200.00);
+        constraints.Rent_Bills(62.00);
+        constraints.WeeklyAllowance(400.00);
+        constraints.FixedSavings(1600.00);
+        constraints.FoodConstraint(0.00);
+        constraints.EntertainmentConstraint(0.00);
+        constraints.MiscExpendituresConstraint(0.00);
+
+        db.budgetConstraintsDao().AddBudgetContraint(constraints);
+    }
 
 }

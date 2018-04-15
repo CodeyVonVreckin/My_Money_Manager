@@ -24,8 +24,8 @@ public interface PurchasesDao {
     @Query("SELECT AVG(Amount) FROM Purchases WHERE DateOfPurchase between :startDate and :endDate")
     double GetAverageAmountsInIntervals(Date startDate, Date endDate);
 
-    @Query("SELECT AVG(Amount), DateOfPurchase FROM Purchases Where DateOfPurchase between :startDate and :endDate Group By DateOfPurchase Order By AVG(Amount) asc")
-    Date GetMostSpentOnAvgPerInterval(Date startDate, Date endDate);
+    @Query("SELECT AVG(Amount) as Amount, DateOfPurchase FROM Purchases Where DateOfPurchase between :startDate and :endDate Group By DateOfPurchase Order By AVG(Amount) asc")
+    Purchases GetMostSpentOnAvgPerInterval(Date startDate, Date endDate);
 
     @Insert
     void MakePurchase(Purchases... purchases);

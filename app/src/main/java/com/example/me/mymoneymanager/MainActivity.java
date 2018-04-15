@@ -1,6 +1,8 @@
 package com.example.me.mymoneymanager;
 
 import android.app.Activity;
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,7 +15,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -21,11 +26,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle myToggle;
+    public static final String EXTRA_MESSAGE="com.example.myapplication.MESSAGE";
+    private static MyMoneyManager _db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        _db = MyMoneyManager.getAppDatabase(getApplicationContext());
         myDrawerLayout = (DrawerLayout)findViewById(R.id.mainPage);
         myToggle = new ActionBarDrawerToggle(this,myDrawerLayout,R.string.open, R.string.open);
         myDrawerLayout.addDrawerListener(myToggle);
@@ -35,8 +43,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView =(NavigationView)findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
 
-
     }
+
+    public void DisplayAmounts(View view){
+
+        TextView amountAvailable = (TextView)findViewById(R.id.amountAvailable);
+        TextView amountSpent = (TextView)findViewById(R.id.amountSpent);
+        try{
+            Date start = new Date();
+          //  double spent = _db.purchaseDOA().GetTotalAmountsInIntervals()
+        }catch(Exception e){
+
+        }
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
