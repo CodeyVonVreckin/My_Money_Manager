@@ -7,4 +7,5 @@
     <string name="button_makePurchase">Make Purchase</string>
     <string name="label_currentAvailable">Available Amount</string>
     <string name="label_currentSpent">Amount Spent</string>
+    <string name="label_PayPeriodInfo">Current Pay Period</string>
 </resources>

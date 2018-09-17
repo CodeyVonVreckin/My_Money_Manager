@@ -21,7 +21,7 @@ public class Purchases {
     private double Amount = 0.00;
 
     @ColumnInfo(name="DateOfPurchase")
-    private Date DateOfPurchase;
+    private double DateOfPurchase = 0;
 
 
     public String Uid(){return Uid;}
@@ -33,7 +33,7 @@ public class Purchases {
     public double Amount (){return Amount;}
     public void Amount(double val){Amount = val;}
 
-    public Date DateOfPurchase() {return DateOfPurchase;}
-    public void DateOfPurchase(Date val ){DateOfPurchase = val;}
+    public double DateOfPurchase() {return DateOfPurchase;}
+    public void DateOfPurchase(double val ){DateOfPurchase = val;}
 
 }

@@ -19,13 +19,13 @@ public interface PurchasesDao {
     double GetTotalAmountSpent();
 
     @Query("SELECT SUM(Amount) FROM Purchases WHERE DateOfPurchase between :startDate and :endDate")
-    double GetTotalAmountsInIntervals(Date startDate, Date endDate);
+    double GetTotalAmountsInIntervals(double startDate, double endDate);
 
     @Query("SELECT AVG(Amount) FROM Purchases WHERE DateOfPurchase between :startDate and :endDate")
-    double GetAverageAmountsInIntervals(Date startDate, Date endDate);
+    double GetAverageAmountsInIntervals(double startDate, double endDate);
 
-    @Query("SELECT AVG(Amount) as Amount, DateOfPurchase FROM Purchases Where DateOfPurchase between :startDate and :endDate Group By DateOfPurchase Order By AVG(Amount) asc")
-    Purchases GetMostSpentOnAvgPerInterval(Date startDate, Date endDate);
+    @Query("SELECT AVG(Amount) as Amount, DateOfPurchase, Uid FROM Purchases Where DateOfPurchase between :startDate and :endDate Group By DateOfPurchase Order By AVG(Amount) asc")
+    Purchases GetMostSpentOnAvgPerInterval(double startDate, double endDate);
 
     @Insert
     void MakePurchase(Purchases... purchases);

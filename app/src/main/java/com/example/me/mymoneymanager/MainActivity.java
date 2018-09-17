@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView navigationView =(NavigationView)findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
-
+        DisplayCurrentPayPeriod();
     }
 
     public void DisplayAmounts(View view){
@@ -54,6 +56,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
           //  double spent = _db.purchaseDOA().GetTotalAmountsInIntervals()
         }catch(Exception e){
 
+        }
+    }
+
+    public void TestDate(View view ){
+        TextView start = (TextView)findViewById((R.id.amountAvailable));
+        TextView end = (TextView)findViewById((R.id.amountSpent));
+        try{
+            Calendar startDate = Calendar.getInstance();
+            startDate.add(Calendar.MONTH, -1);
+            Calendar endDate = Calendar.getInstance();
+            endDate.add(Calendar.MONTH, 1);
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
+            String formatStart = sdf.format(startDate.getTime());
+            String formatEnd = sdf.format((endDate.getTime()));
+            start.setText(formatStart);
+            end.setText(formatEnd);
+        }catch(Exception e){
+            start.setText(e.getMessage());
+        }
+    }
+    // displays the current pay period (26th-26th) would like for this to be automated
+    //  as well as to trigger some sort of refresh function on the amount available and spent
+    public void DisplayCurrentPayPeriod(){
+        TextView payPeriod = (TextView)findViewById((R.id.payPeriod));
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        String formatStart;
+        String formatEnd;
+        try{
+            //  if today is a pay day or later in the month set the starting month
+            //  equal to the current month and set the end month equal to the following month
+            if(start.get(Calendar.DAY_OF_MONTH) >= 26){
+
+                start.set(Calendar.DAY_OF_MONTH, 26);
+                end.add(Calendar.MONTH, 1);
+                end.set(Calendar.DAY_OF_MONTH, 26);
+
+                //  would add the Refresh pay period function here!!!
+
+            }else{
+                //  otherwise set the month of the start to the previous month,
+                //  and make the end of the period equal the current month
+                start.add(Calendar.MONTH, -1);
+                start.set(Calendar.DAY_OF_MONTH, 26);
+                end.set(Calendar.DAY_OF_MONTH, 26);
+            }
+            formatStart = sdf.format(start.getTime());
+            formatEnd = sdf.format((end.getTime()));
+            payPeriod.setText(formatStart + " - "+ formatEnd);
+
+        }catch (Exception e){
+            payPeriod.setText(e.getMessage());
         }
     }
 
