@@ -8,4 +8,8 @@
     <string name="label_currentAvailable">Available Amount</string>
     <string name="label_currentSpent">Amount Spent</string>
     <string name="label_PayPeriodInfo">Current Pay Period</string>
+    <string name="label_EndPayPeriod">YAY ITS PAYDAY!! You were </string>
+    <string name="button_StartNewPeriod">Start New Pay Period</string>
+    <string name="label_Allowance">Allowance</string>
+    <string name="lable_Savings">Saving</string>
 </resources>

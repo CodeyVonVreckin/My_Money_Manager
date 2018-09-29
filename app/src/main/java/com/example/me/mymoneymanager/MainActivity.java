@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout myDrawerLayout;
     private ActionBarDrawerToggle myToggle;
-    public static final String EXTRA_MESSAGE="com.example.myapplication.MESSAGE";
+    //public static final String EXTRA_MESSAGE="com.example.myapplication.MESSAGE";
     private static MyMoneyManager _db;
+    public static final String MESSAGE ="Amount_Under_Budget";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView navigationView =(NavigationView)findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
+
         DisplayCurrentPayPeriod();
+
+        Intent intent = getIntent();
+        String StartingAmount = intent.getStringExtra(EndPayPeriodPage.AVAILABLE);
+       //   if being directed back from the EndPayPeriodPage
+        if(StartingAmount != null){
+            //  set the Amount available to Starting Amount
+            //  set the amount spent to 0.00
+            RefreshAmounts(StartingAmount);
+        }
+
+        //  will want one for coming back to main page after making a purchase
+        //String UpdateAmount = intent
     }
 
     public void DisplayAmounts(View view){
@@ -53,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView amountSpent = (TextView)findViewById(R.id.amountSpent);
         try{
             Date start = new Date();
+            amountAvailable.setText("0.00");
+            amountSpent.setText(("0.00"));
           //  double spent = _db.purchaseDOA().GetTotalAmountsInIntervals()
         }catch(Exception e){
 
@@ -81,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void DisplayCurrentPayPeriod(){
         TextView payPeriod = (TextView)findViewById((R.id.payPeriod));
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
+        TextView amountAvailable = (TextView)findViewById(R.id.amountAvailable);
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
         String formatStart;
@@ -93,8 +110,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 start.set(Calendar.DAY_OF_MONTH, 26);
                 end.add(Calendar.MONTH, 1);
                 end.set(Calendar.DAY_OF_MONTH, 26);
-
                 //  would add the Refresh pay period function here!!!
+                //  not a great implementation but w/e
+                 if(Double.parseDouble(amountAvailable.getText().toString()) < 1000 )
+                     EndPayPeriod();
 
             }else{
                 //  otherwise set the month of the start to the previous month,
@@ -112,6 +131,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public void EndPayPeriod(){
+        TextView amountAvailable = (TextView)findViewById(R.id.amountAvailable);
+        try{
+
+            Intent intent = new Intent(this,EndPayPeriodPage.class);
+            String message =amountAvailable.getText().toString();
+            intent.putExtra(MESSAGE, message);
+            startActivity(intent);
+
+        }catch (Exception e){
+            // add error handling and perhaps send some notification...
+        }
+    }
+
+    public void RefreshAmounts(String amount){
+        TextView amountAvailable = (TextView)findViewById(R.id.amountAvailable);
+        TextView amountSpent = (TextView)findViewById(R.id.amountSpent);
+        try{
+            //  double check to make sure the value doesnt get passed in a null or nothing
+            if(amount != null && amount != "0.00"){
+                amountAvailable.setText(amount);
+                amountSpent.setText(("0.00"));
+            }
+        }catch(Exception e){
+
+        }
+    }
+
+    //  click event for the Make Purchase Button
+    public void MakePurchase(View view){
+        ChangePage(PurchasePage.class);
+    }
+
+    public void ChangePage(Class className){
+        Intent intent = new Intent(this, className);
+        startActivity(intent);
+    }
+
+    public void SetToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -144,25 +204,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return false;
-    }
-
-    //  click event for the Make Purchase Button
-    public void MakePurchase(View view){
-        ChangePage(PurchasePage.class);
-    }
-
-    //  would like for this event to be automatically called on the 26th
-    //  Click event for the End Pay Period Button (button is mainly for testing)
-    public void EndPayPeriod(View view){
-       ChangePage(EndPayPeriodPage.class);
-    }
-
-    public void ChangePage(Class className){
-        Intent intent = new Intent(this, className);
-        startActivity(intent);
-    }
-
-    public void SetToast(String message){
-         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
