@@ -15,25 +15,25 @@ public class BudgetConstraints {
     private String Uid;
 
     @ColumnInfo(name = "MonthlyPay")
-    private double MonthlyPay;
+    private double MonthlyPay = 0.00;
 
     @ColumnInfo(name="FixedSavings")
-    private double FixedSavings;
+    private double FixedSavings = 0.00;
 
     @ColumnInfo(name="Rent_Bills")
-    private double Rent_Bills;
+    private double Rent_Bills = 0.00;
 
     @ColumnInfo(name = "WeeklyAllowance")
-    private double WeeklyAllowance;
+    private double WeeklyAllowance = 0.00;
 
     @ColumnInfo(name ="FoodConstraint")
-    private double FoodConstraint;
+    private double FoodConstraint = 0.00;
 
     @ColumnInfo(name="EntertainmentConstraint")
-    private double EntertainmentConstraint;
+    private double EntertainmentConstraint = 0.00;
 
     @ColumnInfo(name="MiscExpendituresConstraint")
-    private double MiscExpendituresConstraint;
+    private double MiscExpendituresConstraint = 0.00;
 
     public String Uid(){return Uid;}
     public void Uid(String val){Uid =val;}

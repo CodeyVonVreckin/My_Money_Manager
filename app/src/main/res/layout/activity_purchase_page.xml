@@ -6,4 +6,172 @@
     android:layout_height="match_parent"
     tools:context="com.example.me.mymoneymanager.PurchasePage">
 
+    <Button
+        android:id="@+id/makePurchase"
+        android:layout_width="234dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="AddPurchase"
+        android:text="Make Purchase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.952" />
+
+    <EditText
+        android:id="@+id/spent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName|numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="197dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Amount Spent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="64dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:text="$"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="209dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Choose Category"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.298" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="312dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571">
+
+        <RadioButton
+            android:id="@+id/rentButton"
+            android:layout_width="152dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Rent / Bills" />
+
+        <RadioButton
+            android:id="@+id/foodButton"
+            android:layout_width="177dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Food / Snacks" />
+
+        <RadioButton
+            android:id="@+id/entertainmentButton"
+            android:layout_width="175dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Entertainment" />
+
+        <RadioButton
+            android:id="@+id/miscButton"
+            android:layout_width="207dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Misc. Expenditures" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/validation"
+        android:layout_width="249dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812" />
+
 </android.support.constraint.ConstraintLayout>

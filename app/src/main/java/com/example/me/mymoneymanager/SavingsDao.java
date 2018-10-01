@@ -15,6 +15,9 @@ public interface SavingsDao {
     Savings GetSavings();
 
     @Update
-    int AddToSavings(Savings savings);
+    int UpdateSavings(Savings savings);
+
+    @Insert
+    void AddToSavings(Savings savings);
 
 }

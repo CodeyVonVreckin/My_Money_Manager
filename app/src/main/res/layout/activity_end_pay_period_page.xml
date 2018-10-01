@@ -6,6 +6,44 @@
     android:layout_height="match_parent"
     tools:context="com.example.me.mymoneymanager.EndPayPeriodPage">
 
+    <EditText
+        android:id="@+id/monthlyPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="123dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Monthly Pay"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="123dp"
@@ -23,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491"
+        app:layout_constraintVertical_bias="0.616"
         tools:text="@string/lable_Savings" />
 
     <TextView
@@ -43,7 +81,7 @@
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.281"
+        app:layout_constraintVertical_bias="0.429"
         tools:text="@string/label_Allowance" />
 
     <TextView
@@ -92,10 +130,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.612" />
 
     <EditText
         android:id="@+id/allowanceAmount"
@@ -114,7 +152,7 @@
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.423" />
 
     <TextView
         android:id="@+id/overBudgetNote"

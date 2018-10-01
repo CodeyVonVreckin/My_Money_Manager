@@ -50,12 +50,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Intent intent = getIntent();
         String StartingAmount = intent.getStringExtra(EndPayPeriodPage.AVAILABLE);
+        String AmountJustSpent = intent.getStringExtra((PurchasePage.SPENT));
        //   if being directed back from the EndPayPeriodPage
         if(StartingAmount != null){
             //  set the Amount available to Starting Amount
-            //  set the amount spent to 0.00
             RefreshAmounts(StartingAmount);
+            //  clear the Extra in case it persists
+            intent.removeExtra(EndPayPeriodPage.AVAILABLE);
+        }else if(AmountJustSpent !=null){
+            //  if so then update amounts based on new amount. and remove extra
+            UpdateAmounts(AmountJustSpent);
+            //  clear the Extra in case it persists
+            intent.removeExtra((PurchasePage.SPENT));
+        }else{
+            //  need to add the display amounts
         }
+
+        //  else the user is just opening the app so call the DisplayAmounts function.
 
         //  will want one for coming back to main page after making a purchase
         //String UpdateAmount = intent
@@ -66,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView amountAvailable = (TextView)findViewById(R.id.amountAvailable);
         TextView amountSpent = (TextView)findViewById(R.id.amountSpent);
         try{
+            //  need to grab the contraints
             Date start = new Date();
             amountAvailable.setText("0.00");
             amountSpent.setText(("0.00"));
@@ -92,6 +104,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             start.setText(e.getMessage());
         }
     }
+
+    public void UpdateAmounts(String amount){
+        TextView amountAvailable = (TextView)findViewById(R.id.amountAvailable);
+        TextView amountSpent = (TextView)findViewById(R.id.amountSpent);
+        try{
+            double amountIncrement = Double.parseDouble(amount);
+            double updatedAmountAvailable = (Double.parseDouble(amountAvailable.getText().toString()) - amountIncrement) ;
+            double updatedAmountSpent = (Double.parseDouble(amountSpent.getText().toString()) + amountIncrement);
+
+            amountAvailable.setText(Double.toString(updatedAmountAvailable));
+            amountSpent.setText((Double.toString(updatedAmountSpent)));
+
+        }catch (Exception e){
+
+        }
+
+    }
+
     // displays the current pay period (26th-26th) would like for this to be automated
     //  as well as to trigger some sort of refresh function on the amount available and spent
     public void DisplayCurrentPayPeriod(){
